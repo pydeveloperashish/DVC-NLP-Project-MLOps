@@ -4,7 +4,6 @@ config/secrets.yaml
 conda_env.txt
 outside_data
 Testing
-data
 
 # Environments
 .env

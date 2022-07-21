@@ -3,6 +3,9 @@ artifacts:
   Prepared_Data_dir: prepared_data
   Trained_Data: train.tsv
   Test_Data: test.tsv
+  Featurized_Data: features
+  Featurized_Out_Train: train.pkl
+  Featurized_Out_Test: test.pkl
 
 source_data_dirs:
   data_dir: data

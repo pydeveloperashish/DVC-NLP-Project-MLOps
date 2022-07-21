@@ -1518,3 +1518,33 @@ TypeError: expected str, bytes or os.PathLike object, not dict
 [2022-07-21 13:34:31,927:  INFO: all_utils]:  Directory is created at artifacts/prepared_data
 [2022-07-21 13:34:31,928:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
 
+[2022-07-21 13:44:41,654:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 13:44:41,656:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 13:44:41,657:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 13:44:41,658:  INFO: all_utils]:  Directory is created at artifacts/prepared_data
+[2022-07-21 13:44:41,659:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
+
+[2022-07-21 14:04:03,106:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 14:04:03,109:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 14:04:03,111:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 14:04:03,112:  INFO: all_utils]:  Directory is created at artifacts/prepared_data
+[2022-07-21 14:04:03,113:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
+
+[2022-07-21 14:05:12,875:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 14:05:12,879:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 14:05:12,881:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 14:05:12,881:  INFO: all_utils]:  Directory is created at artifacts/prepared_data
+[2022-07-21 14:05:16,670:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
+
+[2022-07-21 14:05:48,108:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 14:05:48,111:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 14:05:48,113:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 14:05:48,113:  INFO: all_utils]:  Directory is created at artifacts/prepared_data
+[2022-07-21 14:05:52,150:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
+
+[2022-07-21 14:12:38,894:  INFO: stage_01_prepare_data]:  >>>>> Stage one started
+[2022-07-21 14:12:38,898:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 14:12:38,900:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 14:12:38,901:  INFO: all_utils]:  Directory is created at artifacts/prepared_data
+[2022-07-21 14:12:43,252:  INFO: stage_01_prepare_data]:  Stage one completed!!! >>>>>
+

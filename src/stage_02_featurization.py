@@ -1,10 +1,10 @@
-from src.utils.all_utils import create_directory, read_yaml, copy_file
+from src.utils.all_utils import create_directory, read_yaml, copy_file, get_data
 import argparse
 import os
 from pprint import pprint
 import logging
-from src.utils.models import get_VGG16_model, prepare_model
 import io
+import numpy as np
 
 logging_str = "[%(asctime)s:  %(levelname)s: %(module)s]:  %(message)s"
 log_dir = "logs"
@@ -15,7 +15,7 @@ logging.basicConfig(filename = os.path.join(log_dir, "running_logs.log"),
                                             filemode = 'a')  
 
 
-def get_data(config_path, params_path):
+def featrization(config_path, params_path):
     ## converting xml data to tsv
     config = read_yaml(config_path)
     params = read_yaml(params_path)
@@ -27,11 +27,17 @@ def get_data(config_path, params_path):
     test_data_path = os.path.join(prepared_data_dir_path, artifacts['Test_Data'])
     
     featurized_data_dir_path = os.path.join(artifacts['Artifacts_dir'], artifacts['Featurized_Data'])
-    create_directory(featurized_data_dir_path)
+    create_directory([featurized_data_dir_path])
     featurized_train_data_path = os.path.join(featurized_data_dir_path, artifacts['Featurized_Out_Train'])
     featurized_test_data_path = os.path.join(featurized_data_dir_path, artifacts['Featurized_Out_Test'])
     
+    max_features = params['featurize']['max_features']
+    ngrams = params['featurize']['ngrams']
+
+    df_train = get_data(train_data_path)
     
+    train_words = np.array(df_train.text.str.lower().values.astype("U"))
+    pprint(train_words[:20])
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
@@ -41,7 +47,7 @@ if __name__ == "__main__":
     
     try:
         logging.info(">>>>> Stage two started")
-        get_data(config_path = parsed_args.config, params_path = parsed_args.params)
+        featrization(config_path = parsed_args.config, params_path = parsed_args.params)
         logging.info("Stage two completed!!! >>>>>\n")
     except Exception as e:
         logging.exception(e)

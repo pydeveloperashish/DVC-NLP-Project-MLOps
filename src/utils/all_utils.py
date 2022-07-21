@@ -6,7 +6,7 @@ from tqdm import tqdm
 import shutil
 import logging
 import time
-
+import pandas as pd
 
 
 def read_yaml(path_to_yaml: str) -> dict:
@@ -46,3 +46,16 @@ def get_timestamp(name):
     timestamp = time.asctime().replace("", "_").replace(":", "_")
     unique_name = f"{name}_at_{timestamp}"
     return unique_name
+
+
+def get_data(path_to_data: str, sep ="\t") -> pd.DataFrame:
+    df = pd.read_csv(
+        path_to_data,
+        encoding = "utf8",
+        header = None,
+        delimiter = sep, 
+        names = ["id", "label", "text"]
+                    )
+    
+    logging.info(f"The input data from {path_to_data} size is {df.shape}\n")
+    return df

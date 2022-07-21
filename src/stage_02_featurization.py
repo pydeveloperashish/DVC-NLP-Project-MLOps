@@ -6,7 +6,7 @@ from pprint import pprint
 import logging
 import io
 import numpy as np
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 
 logging_str = "[%(asctime)s:  %(levelname)s: %(module)s]:  %(message)s"
@@ -36,11 +36,12 @@ def featrization(config_path, params_path):
     
     max_features = params['featurize']['max_features']
     ngrams = params['featurize']['ngrams']
+    
+    ############## Get Train Data  ############################
 
     df_train = get_data(train_data_path)
     
     train_words = np.array(df_train.text.str.lower().values.astype("U"))
-    pprint(train_words[:20])
     
     ## Bag Of Words
     bag_of_words = CountVectorizer(
@@ -50,10 +51,20 @@ def featrization(config_path, params_path):
     bag_of_words.fit(train_words)
     train_words_binary_matrix = bag_of_words.transform(train_words)
     
-    tfidf = TfidfVectorizer(smooth_idf = False)
+    tfidf = TfidfTransformer(smooth_idf = False)
     tfidf.fit(train_words_binary_matrix)
     train_words_tfidf_matrix = tfidf.transform(train_words_binary_matrix)
     save_matrix(df_train, train_words_tfidf_matrix, featurized_train_data_path)
+    
+    ############# Get Test Data  ####################
+    
+    df_test = get_data(test_data_path)
+    test_words = np.array(df_test.text.str.lower().values.astype("U")) 
+    test_words_binary_matrix = bag_of_words.transform(test_words)
+    test_words_tfidf_matrix = tfidf.transform(test_words_binary_matrix)
+    
+    save_matrix(df_test, test_words_tfidf_matrix, featurized_test_data_path)
+    
     
     
             

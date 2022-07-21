@@ -2,7 +2,6 @@ config/secrets.yaml
 .idea/
 .vscode/
 conda_env.txt
-outside_data
 Testing
 
 # Environments

@@ -1,10 +1,13 @@
 from src.utils.all_utils import create_directory, read_yaml, copy_file, get_data
+from src.utils.featurize import save_matrix
 import argparse
 import os
 from pprint import pprint
 import logging
 import io
 import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+
 
 logging_str = "[%(asctime)s:  %(levelname)s: %(module)s]:  %(message)s"
 log_dir = "logs"
@@ -38,7 +41,22 @@ def featrization(config_path, params_path):
     
     train_words = np.array(df_train.text.str.lower().values.astype("U"))
     pprint(train_words[:20])
+    
+    ## Bag Of Words
+    bag_of_words = CountVectorizer(
+        stop_words = "english", max_features = max_features, ngram_range = (1, ngrams)
+    )
 
+    bag_of_words.fit(train_words)
+    train_words_binary_matrix = bag_of_words.transform(train_words)
+    
+    tfidf = TfidfVectorizer(smooth_idf = False)
+    tfidf.fit(train_words_binary_matrix)
+    train_words_tfidf_matrix = tfidf.transform(train_words_binary_matrix)
+    save_matrix(df_train, train_words_tfidf_matrix, featurized_train_data_path)
+    
+    
+            
 if __name__ == "__main__":
     args = argparse.ArgumentParser()
     args.add_argument("--config", "-c", default = "config/config.yaml")

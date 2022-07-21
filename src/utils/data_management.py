@@ -1,48 +1,26 @@
-import tensorflow as tf
 import logging
+from tqdm import tqdm
+import random
+import xml.etree.ElementTree as ET
+import re
 
-
-def train_valid_generator(data_dir, IMAGE_SIZE, BATCH_SIZE, do_data_augmentation):
-    datagenerator_kwargs = dict(
-        rescale = 1./255, 
-        validation_split = 0.20,
-    )
+def processed_posts(fd_in, fd_out_train, fd_out_test, target_tag, split):
     
-    dataflow_kwargs = dict(
-        target_size = IMAGE_SIZE,
-        batch_size = BATCH_SIZE,
-        interpolation = 'bilinear'
-    )
+    line_num = 1
     
-    valid_datagenerator = tf.keras.preprocessing.image.ImageDataGenerator(**datagenerator_kwargs)
-    
-    valid_generator = valid_datagenerator.flow_from_directory(
-        directory = data_dir,
-        subset = "validation", 
-        shuffle = False,
-        **dataflow_kwargs
-    )
-    
-    if do_data_augmentation:
-        train_datagenerator = tf.keras.preprocessing.image.ImageDataGenerator(
-            rotation_range = 40,
-            horizontal_flip = True, vertical_flip = True,
-            width_shift_range = 0.2, height_shift_range = 0.2,
-            shear_range = 0.2, zoom_range = 0.2, **datagenerator_kwargs
-        )
-        logging.info("Data augmentation is used for training")
-        
-    else:
-        train_datagenerator = valid_datagenerator
-        logging.info("Data augmentation is NOT used for training")
-    train_generator = train_datagenerator.flow_from_directory(
-        directory = data_dir,
-        subset = "training", 
-        shuffle = True,
-        **dataflow_kwargs
-    )
-    
-    logging.info("train and valid generator is created")
-    
-    return train_generator, valid_generator
-    
+    for line in tqdm(fd_in):
+        try:
+            fd_out = fd_out_train if random.random() > split else fd_out_test
+            attributes = ET.fromstring(line).attrib
+            pid = attributes.get("Id", "")
+            label = 1 if target_tag in attributes.get("Tags", "") else 0
+            title = re.sub(r"\s+", " ", attributes.get("Title", "")).strip()
+            body = re.sub(r"\s+", " ", attributes.get("Body", "")).strip()
+            text = title + " " + body
+            
+            fd_out.write(f"{pid}\t{label}\t{text}\n")
+            line_num += 1
+                              
+        except Exception as e:
+            msg = f"Skipped the broken line {line_num}: {e}\n"
+            logging.exception(e)          

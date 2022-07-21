@@ -34,7 +34,14 @@ def get_data(config_path, params_path):
     prepared_data_dir_path = os.path.join(artifacts['Artifacts_dir'], artifacts['Prepared_Data_dir'])
     create_directory([prepared_data_dir_path])
     
+    train_data_path = os.path.join(prepared_data_dir_path, artifacts['Trained_Data'])
+    test_data_path = os.path.join(prepared_data_dir_path, artifacts['Test_Data'])
         
+    with open(input_data, encoding='utf8') as fd_in:
+        with open(train_data_path, "w", encoding='utf8') as fd_out_train:
+            with open(test_data_path, "w", encoding='utf8') as fd_out_test:
+                #processed_posts(fd_in, fd_out_train, fd_out_test, "<python>", split)
+                pass
 
 if __name__ == "__main__":
     args = argparse.ArgumentParser()

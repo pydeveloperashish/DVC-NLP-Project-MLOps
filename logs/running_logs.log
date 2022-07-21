@@ -1432,3 +1432,89 @@ _________________________________________________________________
 [2022-07-21 12:11:24,314:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
 [2022-07-21 12:11:24,314:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
 
+[2022-07-21 13:31:10,644:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 13:31:10,648:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 13:31:10,649:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 13:31:10,650:  ERROR: stage_01_load_save]:  expected str, bytes or os.PathLike object, not dict
+Traceback (most recent call last):
+  File "src/stage_01_load_save.py", line 47, in <module>
+    get_data(config_path = parsed_args.config, params_path = parsed_args.params)
+  File "src/stage_01_load_save.py", line 35, in get_data
+    create_directory([artifacts, prepared_data_dir_path])
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/src/utils/all_utils.py", line 21, in create_directory
+    os.makedirs(dir_path, exist_ok=True)
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/env/lib/python3.7/os.py", line 206, in makedirs
+    head, tail = path.split(name)
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/env/lib/python3.7/posixpath.py", line 107, in split
+    p = os.fspath(p)
+TypeError: expected str, bytes or os.PathLike object, not dict
+[2022-07-21 13:31:35,488:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 13:31:35,493:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 13:31:35,495:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 13:31:35,496:  ERROR: stage_01_load_save]:  create_directory() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "src/stage_01_load_save.py", line 47, in <module>
+    get_data(config_path = parsed_args.config, params_path = parsed_args.params)
+  File "src/stage_01_load_save.py", line 35, in get_data
+    create_directory(artifacts, prepared_data_dir_path)
+TypeError: create_directory() takes 1 positional argument but 2 were given
+[2022-07-21 13:31:52,557:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 13:31:52,561:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 13:31:52,563:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 13:31:52,564:  ERROR: stage_01_load_save]:  expected str, bytes or os.PathLike object, not dict
+Traceback (most recent call last):
+  File "src/stage_01_load_save.py", line 47, in <module>
+    get_data(config_path = parsed_args.config, params_path = parsed_args.params)
+  File "src/stage_01_load_save.py", line 35, in get_data
+    create_directory([artifacts, prepared_data_dir_path])
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/src/utils/all_utils.py", line 21, in create_directory
+    os.makedirs(dir_path, exist_ok=True)
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/env/lib/python3.7/os.py", line 206, in makedirs
+    head, tail = path.split(name)
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/env/lib/python3.7/posixpath.py", line 107, in split
+    p = os.fspath(p)
+TypeError: expected str, bytes or os.PathLike object, not dict
+[2022-07-21 13:31:56,629:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 13:31:56,633:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 13:31:56,634:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 13:31:56,635:  INFO: all_utils]:  Directory is created at artifacts/prepared_data
+[2022-07-21 13:31:56,635:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
+
+[2022-07-21 13:32:09,790:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 13:32:09,792:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 13:32:09,795:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 13:32:09,795:  ERROR: stage_01_load_save]:  expected str, bytes or os.PathLike object, not dict
+Traceback (most recent call last):
+  File "src/stage_01_load_save.py", line 47, in <module>
+    get_data(config_path = parsed_args.config, params_path = parsed_args.params)
+  File "src/stage_01_load_save.py", line 35, in get_data
+    create_directory([artifacts])
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/src/utils/all_utils.py", line 21, in create_directory
+    os.makedirs(dir_path, exist_ok=True)
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/env/lib/python3.7/os.py", line 206, in makedirs
+    head, tail = path.split(name)
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/env/lib/python3.7/posixpath.py", line 107, in split
+    p = os.fspath(p)
+TypeError: expected str, bytes or os.PathLike object, not dict
+[2022-07-21 13:34:20,378:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 13:34:20,383:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 13:34:20,385:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 13:34:20,385:  ERROR: stage_01_load_save]:  expected str, bytes or os.PathLike object, not dict
+Traceback (most recent call last):
+  File "src/stage_01_load_save.py", line 47, in <module>
+    get_data(config_path = parsed_args.config, params_path = parsed_args.params)
+  File "src/stage_01_load_save.py", line 35, in get_data
+    create_directory([artifacts, prepared_data_dir_path])
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/src/utils/all_utils.py", line 21, in create_directory
+    os.makedirs(dir_path, exist_ok=True)
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/env/lib/python3.7/os.py", line 206, in makedirs
+    head, tail = path.split(name)
+  File "/media/dev_ashish/DATA/Python37/INeuron-Classes/ML-OPS-Classes/DVC-Classes/DVC-NLP-Project-MLOps/env/lib/python3.7/posixpath.py", line 107, in split
+    p = os.fspath(p)
+TypeError: expected str, bytes or os.PathLike object, not dict
+[2022-07-21 13:34:31,924:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 13:34:31,926:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 13:34:31,927:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 13:34:31,927:  INFO: all_utils]:  Directory is created at artifacts/prepared_data
+[2022-07-21 13:34:31,928:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
+

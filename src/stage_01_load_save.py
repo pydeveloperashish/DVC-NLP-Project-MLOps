@@ -4,6 +4,8 @@ import os
 from pprint import pprint
 import logging
 from tqdm import tqdm
+import random
+
 
 logging_str = "[%(asctime)s:  %(levelname)s: %(module)s]:  %(message)s"
 log_dir = "logs"
@@ -15,8 +17,22 @@ logging.basicConfig(filename = os.path.join(log_dir, "running_logs.log"),
                          
         
 def get_data(config_path, params_path):
+    ## converting xml data to tsv
     config = read_yaml(config_path)
     params = read_yaml(params_path)
+    
+    source_data = config["source_data_dirs"]
+    input_data = os.path.join(source_data['data_dir'], source_data['data_file'])
+    
+    split = params['prepare']['split']
+    seed = params['prepare']['seed']
+    
+    random.seed(seed)
+    
+    artifacts = config['artifacts']
+    
+    prepared_data_dir_path = os.path.join(artifacts['Artifacts_dir'], artifacts['Prepared_Data_dir'])
+    create_directory([prepared_data_dir_path])
     
         
 

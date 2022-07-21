@@ -1,0 +1,133 @@
+schema: '2.0'
+stages:
+  prepare_callbacks:
+    cmd: python3 src/stage_03_prepare_callbacks.py --config=config/config.yaml --params=params.yaml
+    deps:
+    - path: config/config.yaml
+      md5: c9a4f9aeff8ac0609b675dfb381df7e5
+      size: 449
+    - path: params.yaml
+      md5: 8b02c368e8b6c7b9e4213dbad4cb0289
+      size: 121
+    - path: src/stage_03_prepare_callbacks.py
+      md5: f3070956be5fe4df4249988ed89096c6
+      size: 2052
+    - path: src/utils/all_utils.py
+      md5: 82385466351e3874d95d23e0646a48e6
+      size: 1440
+    - path: src/utils/callbacks.py
+      md5: 2c943d10361d953f802e8a11ee33a403
+      size: 1621
+    outs:
+    - path: artifacts/callbacks/checkpoint_cb.cb
+      md5: 34b842e4546f075437097ae46594bfad
+      size: 838
+    - path: artifacts/callbacks/tensorboard_cb.cb
+      md5: 0e613a6f3da7160eed58a491b5a1c762
+      size: 689
+  prepare_base_model:
+    cmd: python3 src/stage_02_prepare_base_model.py --config=config/config.yaml --params=params.yaml
+    deps:
+    - path: config/config.yaml
+      md5: c9a4f9aeff8ac0609b675dfb381df7e5
+      size: 449
+    - path: src/stage_02_prepare_base_model.py
+      md5: 39f694d557981d6256ff92097195cf17
+      size: 2539
+    - path: src/utils/all_utils.py
+      md5: 82385466351e3874d95d23e0646a48e6
+      size: 1440
+    - path: src/utils/models.py
+      md5: c3f0eb74898650e8ba45eb9303805283
+      size: 1805
+    params:
+      params.yaml:
+        CLASSES: 2
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+        LEARNING_RATE: 0.001
+    outs:
+    - path: artifacts/base_model/VGG16_base_model.h5
+      md5: 42302ce35e21d597aff81a999cce4936
+      size: 58920408
+    - path: artifacts/base_model/updated_VGG16_base_model.h5
+      md5: 338f6dc4d2e2610dd0ed4cb404698ad8
+      size: 59132944
+  load_data:
+    cmd: python3 src/stage_01_load_save.py --config=config/config.yaml
+    deps:
+    - path: config/config.yaml
+      md5: c9a4f9aeff8ac0609b675dfb381df7e5
+      size: 449
+    - path: src/stage_01_load_save.py
+      md5: bb9fbc40f9bbf2a8e6271356da55ecd2
+      size: 1471
+    - path: src/utils/all_utils.py
+      md5: 82385466351e3874d95d23e0646a48e6
+      size: 1440
+    outs:
+    - path: data/Cat
+      md5: b63d9f3d5d94c5fc7430524a7d67b6ab.dir
+      size: 4797552
+      nfiles: 186
+    - path: data/Dog
+      md5: 7fcc723622c28db9768a34603b9f8830.dir
+      size: 6781298
+      nfiles: 187
+  train:
+    cmd: python3 src/stage_04_train.py --config=config/config.yaml --params=params.yaml
+    deps:
+    - path: artifacts/base_model/updated_VGG16_base_model.h5
+      md5: 338f6dc4d2e2610dd0ed4cb404698ad8
+      size: 59132944
+    - path: artifacts/callbacks/checkpoint_cb.cb
+      md5: 34b842e4546f075437097ae46594bfad
+      size: 838
+    - path: artifacts/callbacks/tensorboard_cb.cb
+      md5: 0e613a6f3da7160eed58a491b5a1c762
+      size: 689
+    - path: config/config.yaml
+      md5: c9a4f9aeff8ac0609b675dfb381df7e5
+      size: 449
+    - path: data/Cat
+      md5: b63d9f3d5d94c5fc7430524a7d67b6ab.dir
+      size: 4797552
+      nfiles: 186
+    - path: data/Dog
+      md5: 7fcc723622c28db9768a34603b9f8830.dir
+      size: 6781298
+      nfiles: 187
+    - path: params.yaml
+      md5: 8b02c368e8b6c7b9e4213dbad4cb0289
+      size: 121
+    - path: src/stage_04_train.py
+      md5: e70d14c7613ce02f46f2933adf51f0c6
+      size: 3177
+    - path: src/utils/all_utils.py
+      md5: 82385466351e3874d95d23e0646a48e6
+      size: 1440
+    - path: src/utils/callbacks.py
+      md5: 2c943d10361d953f802e8a11ee33a403
+      size: 1621
+    - path: src/utils/data_management.py
+      md5: 9d002ce8b60d9a7ba59fd02eb4c3e545
+      size: 1496
+    - path: src/utils/models.py
+      md5: c3f0eb74898650e8ba45eb9303805283
+      size: 1805
+    params:
+      params.yaml:
+        AUGMENTATION: true
+        BATCH_SIZE: 16
+        EPOCHS: 1
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: artifacts/model
+      md5: 7eae83a700289e3cf60b7905edd88b6a.dir
+      size: 59135120
+      nfiles: 1

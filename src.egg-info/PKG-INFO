@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: src
+Version: 0.0.1
+Summary: A small package for dvc dl pipeline demo
+Home-page: https://github.com/pydeveloperashish/DVC-DL-Project-MLOps 
+Author: Developer Ashish
+Author-email: therobomarket@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+# to install the package in same root directory -
+# and to save the space in C drive
+
+conda create --prefix ./env -python=3.7.6 -y 
+
+conda activate path/to/package or source activate path/to/package
+
+
+

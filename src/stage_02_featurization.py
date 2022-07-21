@@ -18,7 +18,7 @@ logging.basicConfig(filename = os.path.join(log_dir, "running_logs.log"),
                                             filemode = 'a')  
 
 
-def featrization(config_path, params_path):
+def featurization(config_path, params_path):
     ## converting xml data to tsv
     config = read_yaml(config_path)
     params = read_yaml(params_path)
@@ -76,7 +76,7 @@ if __name__ == "__main__":
     
     try:
         logging.info(">>>>> Stage two started")
-        featrization(config_path = parsed_args.config, params_path = parsed_args.params)
+        featurization(config_path = parsed_args.config, params_path = parsed_args.params)
         logging.info("Stage two completed!!! >>>>>\n")
     except Exception as e:
         logging.exception(e)

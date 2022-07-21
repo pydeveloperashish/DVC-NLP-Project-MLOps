@@ -4,8 +4,8 @@ stages:
     cmd: python3 src/stage_01_prepare_data.py --config=config/config.yaml --params=params.yaml
     deps:
     - path: config/config.yaml
-      md5: caca993964c3520660b3aa425fb1c93a
-      size: 180
+      md5: 666c1392169989ab1e1e4698b1006ec1
+      size: 274
     - path: data/data.xml
       md5: a304afb96060aad90176268345e10355
       size: 37891850
@@ -13,8 +13,8 @@ stages:
       md5: ac91980166ee081d5a3c4d83bc2f87df
       size: 2249
     - path: src/utils/all_utils.py
-      md5: 82385466351e3874d95d23e0646a48e6
-      size: 1440
+      md5: e887704352add7db29008521df9c8622
+      size: 1799
     - path: src/utils/data_management.py
       md5: 6f6ddab864d5961f317a827b046affbc
       size: 936
@@ -26,6 +26,42 @@ stages:
     - path: artifacts/prepared_data/test.tsv
       md5: de02240ce7dafb9d9b3f3883e1c99c20
       size: 4799909
+      isexec: true
     - path: artifacts/prepared_data/train.tsv
       md5: 324d6510bbbd18f0656e493c03087d64
       size: 19061410
+      isexec: true
+  featurize:
+    cmd: python3 src/stage_02_featurization.py --config=config/config.yaml --params=params.yaml
+    deps:
+    - path: artifacts/prepared_data/test.tsv
+      md5: de02240ce7dafb9d9b3f3883e1c99c20
+      size: 4799909
+    - path: artifacts/prepared_data/train.tsv
+      md5: 324d6510bbbd18f0656e493c03087d64
+      size: 19061410
+    - path: config/config.yaml
+      md5: 666c1392169989ab1e1e4698b1006ec1
+      size: 274
+    - path: src/stage_02_featurization.py
+      md5: ac9b77d14f9843701a47316f86c352a7
+      size: 3283
+    - path: src/utils/all_utils.py
+      md5: e887704352add7db29008521df9c8622
+      size: 1799
+    - path: src/utils/featurize.py
+      md5: 9029003c29c145b31361f33f69d67e54
+      size: 508
+    params:
+      params.yaml:
+        featurize.max_features: 3000
+        featurize.ngrams: 2
+    outs:
+    - path: artifacts/features/test.pkl
+      md5: 8094867caa2a2e6a76cfafdb3bd769e3
+      size: 2547417
+      isexec: true
+    - path: artifacts/features/train.pkl
+      md5: f2f6c331f7347b3c3fe4bf7fe2e6f8ab
+      size: 10191509
+      isexec: true

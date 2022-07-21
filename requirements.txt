@@ -1,7 +1,7 @@
 -e .
 
 dvc
-tensorflow
+scikit-learn
 matplotlib
 numpy
 pandas

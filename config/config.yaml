@@ -10,10 +10,7 @@ artifacts:
   Callbacks_dir: callbacks
   Data_dir: data
 
-source_download_dirs:
-  - outside_data/Dog
-  - outside_data/Cat
-
-local_data_dirs:
-  - data/Dog
-  - data/Cat
+source_data_dirs:
+  data_dir: data
+  data_file: data.xml
+  

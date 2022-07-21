@@ -1427,3 +1427,8 @@ _________________________________________________________________
 [2022-07-21 00:11:08,825:  INFO: stage_04_train]:  Stage four completed: training completed and model is saved >>>>>
 
 
+[2022-07-21 12:11:24,311:  INFO: stage_01_load_save]:  >>>>> Stage one started
+[2022-07-21 12:11:24,313:  INFO: all_utils]:  yaml file: config/config.yaml loaded successfully
+[2022-07-21 12:11:24,314:  INFO: all_utils]:  yaml file: params.yaml loaded successfully
+[2022-07-21 12:11:24,314:  INFO: stage_01_load_save]:  Stage one completed!!! >>>>>
+

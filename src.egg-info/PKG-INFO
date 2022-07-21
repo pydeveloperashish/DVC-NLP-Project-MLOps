@@ -2,7 +2,7 @@ Metadata-Version: 2.1
 Name: src
 Version: 0.0.1
 Summary: A small package for dvc dl pipeline demo
-Home-page: https://github.com/pydeveloperashish/DVC-DL-Project-MLOps 
+Home-page: https://github.com/pydeveloperashish/DVC-NLP-Project-MLOps
 Author: Developer Ashish
 Author-email: therobomarket@gmail.com
 License: UNKNOWN

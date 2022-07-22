@@ -7,7 +7,6 @@ import logging
 import io
 import joblib
 import numpy as np
-from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.ensemble import RandomForestClassifier
 
 logging_str = "[%(asctime)s:  %(levelname)s: %(module)s]:  %(message)s"

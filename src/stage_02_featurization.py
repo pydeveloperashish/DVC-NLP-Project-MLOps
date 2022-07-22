@@ -31,6 +31,7 @@ def featurization(config_path, params_path):
     
     featurized_data_dir_path = os.path.join(artifacts['Artifacts_dir'], artifacts['Featurized_Data'])
     create_directory([featurized_data_dir_path])
+    
     featurized_train_data_path = os.path.join(featurized_data_dir_path, artifacts['Featurized_Out_Train'])
     featurized_test_data_path = os.path.join(featurized_data_dir_path, artifacts['Featurized_Out_Test'])
     

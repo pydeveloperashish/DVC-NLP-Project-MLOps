@@ -59,3 +59,9 @@ def get_data(path_to_data: str, sep ="\t") -> pd.DataFrame:
     
     logging.info(f"The input data from {path_to_data} size is {df.shape}\n")
     return df
+
+
+def save_json(path, data):
+    with open(path, 'w') as f:
+        json.dump(data, f, indent = 4)
+    logging.info(f"json file saved at: {path}")        

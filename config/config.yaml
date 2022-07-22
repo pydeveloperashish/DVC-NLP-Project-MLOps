@@ -9,6 +9,13 @@ artifacts:
   Model_dir: model
   Model_Name: model.pkl
 
+metrics: 
+  Scores: scores.json
+
+plots:
+  PRC: prc.json
+  ROC: roc.json
+
 source_data_dirs:
   data_dir: data
   data_file: data.xml

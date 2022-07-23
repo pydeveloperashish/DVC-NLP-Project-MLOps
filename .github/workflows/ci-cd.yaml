@@ -18,7 +18,7 @@ jobs:
           cml-runner \
           --cloud aws \
           --cloud-region us-west \
-          --cloud-type=m \
+          --cloud-type=t2.micro \
           --labels=cml-runner 
         
 

@@ -42,7 +42,7 @@ def featurization(config_path, params_path):
 
     df_train = get_data(train_data_path)
     
-    train_words = np.array(df_train.text.str.lower().astype('U').values
+    train_words = np.array(df_train.text.str.lower().astype('U').values)
     
     ## Bag Of Words
     bag_of_words = CountVectorizer(

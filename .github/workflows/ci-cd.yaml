@@ -16,7 +16,7 @@ jobs:
           repo_token: ${{secrets.GITHUB_TOKEN}}
         run: |
           # Your ML workflow commands
-          pip install -- upgrade pip
+          pip3 install --upgrade pip
           pip3 install -r requirements.txt
 
           dvc repro -v ## v means verbose output

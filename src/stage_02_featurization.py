@@ -60,7 +60,7 @@ def featurization(config_path, params_path):
     ############# Get Test Data  ####################
     
     df_test = get_data(test_data_path)
-    test_words = np.array(df_test.text.str.lower().values.astype("U")) 
+    test_words = np.array(df_test.text.str.lower().values.astype("U1000")) 
     test_words_binary_matrix = bag_of_words.transform(test_words)
     test_words_tfidf_matrix = tfidf.transform(test_words_binary_matrix)
     
